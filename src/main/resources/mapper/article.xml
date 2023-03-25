@@ -10,4 +10,7 @@
     <insert id="articleSaveMapper" parameterType="com.example.demo.Article.dto.ArticleDto">
         insert into article(subject, content) values(#{subject}, #{content})
     </insert>
+    <select id="findAllArticle" resultType="com.example.demo.Article.dto.ArticleDto">
+        SELECT * FROM article;
+    </select>
 </mapper>
