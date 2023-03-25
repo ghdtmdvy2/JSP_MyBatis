@@ -1,12 +1,16 @@
+server:
+  port: 8080
 spring:
   profiles:
     active: ${activeProfile:dev}
   devtools:
     livereload:
       enabled: true
-    restart:
-      enabled: true
   mvc:
     view:
       prefix: /WEB-INF/jsp/
       suffix: .jsp
+mybatis:
+  mapper-locations: mapper/**.xml
+
+
