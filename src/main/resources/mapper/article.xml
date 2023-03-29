@@ -13,4 +13,15 @@
     <select id="findAllArticle" resultType="com.example.demo.Article.dto.ArticleDto">
         SELECT * FROM article;
     </select>
+    <update id="modify" parameterType="com.example.demo.Article.dto.ArticleDto">
+        update article
+        set subject = #{subject},
+            content = #{content}
+        where id = #{id}
+    </update>
+    <delete id="delete" parameterType="com.example.demo.Article.dto.ArticleDto">
+        delete
+        from article
+        where id = #{id}
+    </delete>
 </mapper>

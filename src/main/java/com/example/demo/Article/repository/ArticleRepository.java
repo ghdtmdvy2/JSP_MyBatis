@@ -16,4 +16,8 @@ public interface ArticleRepository {
     void articleSaveJPQL(ArticleDto articleDto);
 
     List<ArticleDto> findAllArticle();
+
+    void modify(ArticleDto articleDto);
+
+    void delete(ArticleDto articleDto);
 }
