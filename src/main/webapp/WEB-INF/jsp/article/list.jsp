@@ -16,14 +16,14 @@
                 <input value="${article.id}" readonly>
                 <input value="${article.content}" readonly>
                 <input value="${article.subject}" readonly>
+                </br>
+                <form id="myForm_${article.id}"  method="patch">
+                    <button id="myButton_${article.id}" type="button" onclick="articleModify(${article.id})">수정</button>
+                </form>
+                <form id="myForm_delete_${article.id}"  method="delete">
+                    <button id="myButton_delete_${article.id}" type="button" onclick="articleDelete(${article.id})">삭제</button>
+                </form>
             </div>
-            </br>
-            <form id="myForm_${article.id}"  method="patch">
-                <button id="myButton_${article.id}" type="button" onclick="articleModify(${article.id})">수정</button>
-            </form>
-            <form id="myForm_delete_${article.id}"  method="delete">
-                <button id="myButton_delete_${article.id}" type="button" onclick="articleDelete(${article.id})">삭제</button>
-            </form>
         </c:forEach>
         </br>
         <form method="post">
@@ -94,6 +94,8 @@
             })
         }
         function articleDelete(articleId){
+            const parent = document.querySelector("#article_"+articleId);
+            parent.remove();
             $.ajax({
                 type : 'delete',           // 타입 (get, post, put 등등)
                 url : '/article/' ,           // 요청할 서버 url
@@ -103,6 +105,7 @@
                 }
                 ,
                 success : function(result) { // 결과 성공 콜백함수
+
                     console.log(result);
                 },
                 error : function(request, status, error) { // 결과 에러 콜백함수
