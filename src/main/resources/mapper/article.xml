@@ -7,19 +7,19 @@
 
 <!-- Mapper 를 사용하는 Repository 의 전체 경로를 적어줘야함. -->
 <mapper namespace="com.example.demo.Article.repository.ArticleRepository">
-    <insert id="articleSaveMapper" parameterType="com.example.demo.Article.dto.ArticleDto">
+    <insert id="articleSaveMapper" parameterType="ArticleDto">
         insert into article(subject, content) values(#{subject}, #{content})
     </insert>
-    <select id="findAllArticle" resultType="com.example.demo.Article.dto.ArticleDto">
+    <select id="findAllArticle" resultType="ArticleDto">
         SELECT * FROM article;
     </select>
-    <update id="modify" parameterType="com.example.demo.Article.dto.ArticleDto">
+    <update id="modify" parameterType="ArticleDto">
         update article
         set subject = #{subject},
             content = #{content}
         where id = #{id}
     </update>
-    <delete id="delete" parameterType="com.example.demo.Article.dto.ArticleDto">
+    <delete id="delete" parameterType="ArticleDto">
         delete
         from article
         where id = #{id}

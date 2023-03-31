@@ -16,7 +16,8 @@ spring:
     username: "test"
     password: "test1234!@#$"
 mybatis:
-  mapper-locations: mapper/**.xml
+  mapper-locations: "mapper/**.xml"
+  config-location: "classpath:mybatis-config.xml"
 
 logging:
   level:
