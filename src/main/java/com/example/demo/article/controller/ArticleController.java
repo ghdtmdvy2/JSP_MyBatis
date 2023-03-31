@@ -1,9 +1,8 @@
-package com.example.demo.Article.controller;
+package com.example.demo.article.controller;
 
-import com.example.demo.Article.dto.ArticleDto;
-import com.example.demo.Article.service.ArticleService;
+import com.example.demo.article.dto.ArticleDto;
+import com.example.demo.article.service.ArticleService;
 import lombok.RequiredArgsConstructor;
-import org.apache.ibatis.annotations.Delete;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

@@ -1,7 +1,7 @@
-package com.example.demo.Article.service;
+package com.example.demo.article.service;
 
-import com.example.demo.Article.dto.ArticleDto;
-import com.example.demo.Article.repository.ArticleRepository;
+import com.example.demo.article.dto.ArticleDto;
+import com.example.demo.article.repository.ArticleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -6,7 +6,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- Mapper 를 사용하는 Repository 의 전체 경로를 적어줘야함. -->
-<mapper namespace="com.example.demo.Article.repository.ArticleRepository">
+<mapper namespace="com.example.demo.article.repository.ArticleRepository">
     <insert id="articleSaveMapper" parameterType="ArticleDto">
         insert into article(subject, content) values(#{subject}, #{content})
     </insert>

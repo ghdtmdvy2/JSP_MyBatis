@@ -1,6 +1,6 @@
-package com.example.demo.Article.repository;
+package com.example.demo.article.repository;
 
-import com.example.demo.Article.dto.ArticleDto;
+import com.example.demo.article.dto.ArticleDto;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 
