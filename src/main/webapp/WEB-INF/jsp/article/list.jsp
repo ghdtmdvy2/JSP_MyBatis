@@ -86,12 +86,12 @@
                     articleSubject : articleSubject,
                     articleContent : articleContent
                 }
-                // ,
-                // beforeSend: function(xhr) {
-                //     const token = $("meta[name='_csrf']").attr("content");
-                //     const header = $("meta[name='_csrf_header']").attr("content");
-                //     xhr.setRequestHeader(header, token);
-                // }
+                ,
+                beforeSend: function(xhr) {
+                    const token = $("meta[name='_csrf']").attr("content");
+                    const header = $("meta[name='_csrf_header']").attr("content");
+                    xhr.setRequestHeader(header, token);
+                }
                 ,
                 success : function(result) { // 결과 성공 콜백함수
                     console.log(result);
