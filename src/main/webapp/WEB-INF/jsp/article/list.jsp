@@ -18,9 +18,16 @@
     <!-- HTML 문서의 본문 내용 -->
         <c:forEach items="${articleList}" var="article">
             <div id="article_${article.id}">
+                id
                 <input value="${article.id}" readonly>
+                content
                 <input value="${article.content}" readonly>
+                subject
                 <input value="${article.subject}" readonly>
+                usersId
+                <input value="${article.usersId}" readonly>
+                username
+                <input value="${article.username}" readonly>
                 </br>
                 <c:if test="${article.usersId == userContext.getId()}">
                     <form id="myForm_${article.id}"  method="patch">
@@ -110,6 +117,11 @@
                 async : true,            // 비동기화 여부 (default : true)
                 data : {
                     articleId : articleId
+                },
+                beforeSend: function(xhr) {
+                    const token = $("meta[name='_csrf']").attr("content");
+                    const header = $("meta[name='_csrf_header']").attr("content");
+                    xhr.setRequestHeader(header, token);
                 }
                 ,
                 success : function(result) { // 결과 성공 콜백함수
