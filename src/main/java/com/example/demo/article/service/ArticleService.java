@@ -1,6 +1,6 @@
 package com.example.demo.article.service;
 
-import com.example.demo.article.dto.ArticleDto;
+import com.example.demo.article.dao.ArticleDao;
 import com.example.demo.article.repository.ArticleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,29 +12,30 @@ import java.util.List;
 public class ArticleService {
     private final ArticleRepository articleRepository;
 
-    public List<ArticleDto> getArticleList() {
+    public List<ArticleDao> getArticleList() {
         return articleRepository.findAllArticle();
     }
 
-    public void create(String subject, String content) {
-        ArticleDto articleDto = new ArticleDto();
-        articleDto.setSubject(subject);
-        articleDto.setContent(content);
-        articleRepository.articleSaveMapper(articleDto);
+    public void create(String subject, String content, Long userId) {
+        ArticleDao articleDao = new ArticleDao();
+        articleDao.setSubject(subject);
+        articleDao.setContent(content);
+        articleDao.setUsersId(userId);
+        articleRepository.articleSaveMapper(articleDao);
     }
 
-    public ArticleDto modify(Long articleId, String subject, String content) {
-        ArticleDto articleDto = new ArticleDto();
-        articleDto.setId(articleId);
-        articleDto.setSubject(subject);
-        articleDto.setContent(content);
-        articleRepository.modify(articleDto);
-        return articleDto;
+    public ArticleDao modify(Long articleId, String subject, String content) {
+        ArticleDao articleDao = new ArticleDao();
+        articleDao.setId(articleId);
+        articleDao.setSubject(subject);
+        articleDao.setContent(content);
+        articleRepository.modify(articleDao);
+        return articleDao;
     }
 
     public void delete(Long articleId) {
-        ArticleDto articleDto = new ArticleDto();
-        articleDto.setId(articleId);
-        articleRepository.delete(articleDto);
+        ArticleDao articleDao = new ArticleDao();
+        articleDao.setId(articleId);
+        articleRepository.delete(articleDao);
     }
 }

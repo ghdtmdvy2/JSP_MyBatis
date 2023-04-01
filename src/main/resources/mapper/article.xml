@@ -8,10 +8,11 @@
 <!-- Mapper 를 사용하는 Repository 의 전체 경로를 적어줘야함. -->
 <mapper namespace="com.example.demo.article.repository.ArticleRepository">
     <insert id="articleSaveMapper" parameterType="ArticleDto">
-        insert into article(subject, content) values(#{subject}, #{content})
+        insert into article(subject, content,usersId) values(#{subject}, #{content}, #{usersId})
     </insert>
     <select id="findAllArticle" resultType="ArticleDto">
-        SELECT * FROM article;
+        SELECT * FROM article a
+        INNER JOIN users u ON a.usersId = u.id
     </select>
     <update id="modify" parameterType="ArticleDto">
         update article

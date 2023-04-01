@@ -7,9 +7,14 @@
     <html lang="ko">
     <head>
         <meta charset="UTF-8">
+        <meta name="_csrf" content="${_csrf.token}" />
+        <meta name="_csrf_header" content="${_csrf.headerName}" />
         <title>문서 제목</title>
     </head>
     <body>
+    <a href="/user/signup">회원가입</a>
+    <a href="/user/login">로그인</a>
+    <a href="/user/logout">로그아웃</a>
     <!-- HTML 문서의 본문 내용 -->
         <c:forEach items="${articleList}" var="article">
             <div id="article_${article.id}">
@@ -17,16 +22,19 @@
                 <input value="${article.content}" readonly>
                 <input value="${article.subject}" readonly>
                 </br>
-                <form id="myForm_${article.id}"  method="patch">
-                    <button id="myButton_${article.id}" type="button" onclick="articleModify(${article.id})">수정</button>
-                </form>
-                <form id="myForm_delete_${article.id}"  method="delete">
-                    <button id="myButton_delete_${article.id}" type="button" onclick="articleDelete(${article.id})">삭제</button>
-                </form>
+                <c:if test="${article.usersId == userContext.getId()}">
+                    <form id="myForm_${article.id}"  method="patch">
+                        <button id="myButton_${article.id}" type="button" onclick="articleModify(${article.id})">수정</button>
+                    </form>
+                    <form id="myForm_delete_${article.id}"  method="delete">
+                        <button id="myButton_delete_${article.id}" type="button" onclick="articleDelete(${article.id})">삭제</button>
+                    </form>
+                </c:if>
             </div>
         </c:forEach>
         </br>
         <form method="post">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             제목
             <input name="subject">
             내용

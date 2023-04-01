@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- MyBatis 매퍼 파일은 XML 문서이며, 이 문서가 DTD(Document Type Definition) 를 따르고 있다는 것은
+     MyBatis 가 이 문서의 구조를 인식하고 해석할 수 있다는 것을 의미합니다. -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Mapper 를 사용하는 Repository 의 전체 경로를 적어줘야함. -->
+<mapper namespace="com.example.demo.user.repository.UserRepository">
+    <insert id="create" parameterType="com.example.demo.user.dao.UserDao">
+        insert into users(password, username) values(#{password},#{username});
+    </insert>
+    <select id="findByUsername" parameterType="com.example.demo.user.dao.UserDao" resultType="com.example.demo.user.dao.UserDao">
+        select * from users where username = #{username}
+    </select>
+</mapper>

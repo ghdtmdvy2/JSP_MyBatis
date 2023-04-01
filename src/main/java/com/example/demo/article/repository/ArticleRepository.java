@@ -1,23 +1,20 @@
 package com.example.demo.article.repository;
 
-import com.example.demo.article.dto.ArticleDto;
-import org.apache.ibatis.annotations.Insert;
+import com.example.demo.article.dao.ArticleDao;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 @Mapper
 public interface ArticleRepository {
-    void articleSaveMapper(ArticleDto articleDto);
+    void articleSaveMapper(ArticleDao articleDao);
 
-    // insert into article(subject, content) values("제목", "내용");
+//    @Insert("insert into article(subject, content) values(#{subject}, #{content})")
+//    void articleSaveJPQL(ArticleDto articleDto);
 
-    @Insert("insert into article(subject, content) values(#{subject}, #{content})")
-    void articleSaveJPQL(ArticleDto articleDto);
+    List<ArticleDao> findAllArticle();
 
-    List<ArticleDto> findAllArticle();
+    void modify(ArticleDao articleDao);
 
-    void modify(ArticleDto articleDto);
-
-    void delete(ArticleDto articleDto);
+    void delete(ArticleDao articleDao);
 }
